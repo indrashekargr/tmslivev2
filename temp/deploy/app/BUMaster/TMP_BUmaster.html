@@ -1,0 +1,215 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+
+    .modal-body {
+        max-height: calc(100vh - 210px);
+        overflow-y: auto;
+    }
+
+    .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+        color: #fff;
+        background-color: #061743;
+    }
+    .nav.nav-pills .active>a {
+        background-color: #061743;
+    }
+
+    a:focus, a:hover {
+        color: #202020;
+        text-decoration: underline;
+    }
+    a:focus, a:hover {
+        color: #202020;
+        text-decoration: underline;
+    }
+    a:active, a:hover {
+        outline: 0;
+    }
+    a {
+        outline: none!important;
+    }
+    a {
+        color: #40c0e8;
+        text-decoration: none;
+    }
+    a {
+        color: #40c0e8;
+        text-decoration: none;
+    }
+
+    #wrap {
+        overflow: auto;
+        height: 400px;
+
+
+    }
+    td {
+        background-color: #fff;
+
+    }
+    .theadbackgroud{
+        background: #ddd;
+    }
+</style>
+
+<div class="col-lg-12">
+    <div class="col-lg-12" style="margin-top: 5px;margin-left: 22px;">
+       <!-- <a >
+            <button class="btn btn-info pull-right MRTop"  style="margin-left: 1%;margin-right: 1%;" ui-sref="home" title="Dashboard"><i class="fa fa-home"></i></button>
+            </button>
+            <button class="btn btn-info pull-right MRTop"  style="margin-left: 1%;margin-right: 1%;"  ui-sref="skillmaster" title="Skill Master"><i class="material-icons">list</i></button>
+            </button>
+            <button class="btn btn-info pull-right MRTop"  style="margin-left: 1%;margin-right: 1%;" ui-sref="statusmaster" title="Status Master"><i class="fa fa-street-view"></i></button>
+            </button>
+            <button class="btn btn-info pull-right MRTop"  style="margin-left: 1%;margin-right: 1%;" ui-sref="rolemaster" title="Role Master"><i class="fa fa-users"></i></button>
+            </button>
+        </a>-->
+       <ul class="nav nav-pills nav-justified">
+
+           <li><a  ui-sref="skillmaster" data-toggle="pill"><i class="fa fa-desktop"></i>&nbsp;&nbsp;&nbsp;Skill Master</a></li>
+            <li><a ui-sref="statusmaster"><i class="fa fa-street-view"></i>&nbsp;&nbsp;&nbsp;Status Master</a></li>
+           <li class="active"><a ui-sref="bumaster" data-toggle="pill"><i class="fa fa-institution"></i>&nbsp;&nbsp;&nbsp;Business Unit Master</a></li>
+           <li><a ui-sref="rolemaster"><i class="fa fa-users"></i>&nbsp;&nbsp;&nbsp;Role Master</a></li>
+           <li><a ui-sref="home"><i class="fa fa-home"></i>&nbsp;&nbsp;&nbsp;Home</a></li>
+        </ul>
+    </div>
+</div>
+<div class="wrapper" >
+
+    <section style="
+margin-left: 0;
+" >
+        <!-- Page content-->
+        <div class="content-wrapper"style="background: #f5f7fa;">
+            <!-- <a type="button" class="pull-right btn btn-box-tool" style="color:white;"><img src="assets/images/icons/add.png" data-toggle="modal" data-target="#AddStatusModal" title="Add Skills" style="cursor:pointer;width: 30px;"></a> -->
+            <a data-toggle="modal" data-target="#AddBuModal" data-whatever="@mdo"><img src="assets/images/icons/add.png" class="pull-right MRTop" data-toggle="tooltip" data-placement="top" title="Add Business Unit" data-original-title="Add Business Unit"></a>
+            <!--<h5 class="text-center">Skill Category Master</h5>-->
+            <h5 class="text-center" style="font-size: 21px;color: black;margin-top: -4px;margin-left: 0px;">Business Unit Master Data</h5>
+            <div id="wrap">
+                <table id="" class="table  table-hover">
+                    <thead class="theadbackgroud" style="background: #44c2e8;">
+                    <tr>
+                        <th style="
+color: white;">No.</th>
+                        <th style="
+color: white;">Business Unit Name</th>
+                        <th style="
+color: white;">Description</th>
+                        <th style="
+color: white;">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="bu in filteredEmployee = (getBuList | filter : searchText)">
+                        <td>{{$index+1}}</td>
+                        <td>{{bu.buName}}</td>
+                        <td>{{bu.Description}}</td>
+                        <td> <a href="" data-toggle="modal"  title="Edit Bu Master" data-target="#exampleModaladd" data-whatever="@mdo"><img src="assets/images/icons/edit icon.png" data-toggle="tooltip" data-placement="top" class="width_edit_icon" data-toggle="tooltip" data-placement="top" ng-click="editbu(bu.Id,bu.buName,bu.Description)" title="Edit Business Unit">&nbsp; &nbsp; &nbsp;</a> </td>
+                    </tr>
+                    <tr ng-show="filteredEmployee.length == 0">
+                        <td colspan="15" style="font-weight: bold;">No Data found</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+<!-- Footer Div starts -->
+<br on-swipe-down=""/>
+<input type="text"  class="col-2 form-control" placeholder="Search" ng-model='searchText'>
+<span class="input-group-btn"></span>
+</div>
+</div>
+<div class="" style="text-align: center; margin-left: 1px;  background-color: #23b7e5; background-image: linear-gradient(180deg, #23b7e5 0, #51c6ea); height:65px;>
+
+    <footer style="background-color: #23b7e5; text-align: center;"> <p style="color:#fff;"> <span>&copy;</span> Copyright 2017-2018 <strong>IMSS(P) Ltd.</strong> All Rights Reserved.  TMS <strong>Version V 1.0.1</strong></p></footer>
+</div>
+<!-- Footer Div ends -->
+
+
+<!-- Starts Add Role Master -->
+
+<div class="modal fade" id="AddBuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #061743;color: #fafafa;text-align: center;">
+                <button type="button" style="color: white;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="float: right;">×</span></button>
+                <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                <h4 class="modal-title" id="exampleModalLabel">Add Business Unit Master Data</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Business Unit Name*:</label>
+                        <input type="text" ng-model="buName" class="form-control" id="recipient-name"> </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Description*:</label>
+                        <textarea class="form-control" ng-model="Description" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit"  class="mb-sm btn btn-primary btn-outline" ng-click="AddBu()">Add</button>
+                <!--<button type="button" class="mb-sm btn btn-danger btn-outline" data-dismiss="modal" ng-click="Clear()">Cancel</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ends Add Role Master -->
+
+
+<!-- Starts Edit Business Master Data -->
+
+<div class="modal fade" id="exampleModaladd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #061743;color: #fafafa;text-align: center;">
+                <button type="button" style="color: white;" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" style="float: right;">×</span></button>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+                <h4 class="modal-title" id="exampleModalLabel">Edit Business Unit Master</h4> </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Business Unit Name*:</label>
+                        <input type="text" class="form-control" ng-model="bu.buName" id="recipient-name"> </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">Description*:</label>
+                        <textarea class="form-control" ng-model="bu.Description" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="mb-sm btn btn-primary btn-outline" ng-click="updateBu()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ends Edit Business Master Data -->
+
+<script>
+    document.getElementById("wrap").addEventListener("scroll", function () {
+        var translate = "translate(0," + this.scrollTop + "px)";
+        this.querySelector("thead").style.transform = translate;
+    });
+
+    $("textarea").on('change paste keyup', function () {
+        var currText = $(this).val();
+        if (currText.length > 100) {
+            var text = $(this).text();
+            $(this).text(text.substr(0, 100));
+            alert("You have reached the maximum character length 100");
+            return false;
+        } else if (currText.length < 100){
+            return true;
+        }
+    });
+
+    $("textarea1").on('change paste keyup', function () {
+        var currText = $(this).val();
+        if (currText.length > 100) {
+            var text = $(this).text();
+            $(this).text(text.substr(0, 100));
+            alert("You have reached the maximum character length 100");
+        }
+    });
+
+</script>

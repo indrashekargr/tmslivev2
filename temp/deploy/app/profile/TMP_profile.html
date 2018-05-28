@@ -1,0 +1,358 @@
+<style>
+    .table>thead>tr>th {
+        padding: 8px 8px;
+        color: #ffffff!important;
+        background: #23b7e5!important;
+    }
+    #wrap {
+overflow: auto;
+height: 200px;
+}
+
+        .vl {
+            border-left: 1px solid #23b7e5!important;
+            height: 80%;
+            position: absolute;
+            left: 42%;
+            margin-left: 1px;
+            top: 38px;
+        }
+    .table>thead>tr>th {
+        padding: 8px 8px;
+        color: #ffffff!important;
+        background: #221092!important;
+    }
+
+    .btn1 {
+        background-color: #23b7e5;
+        border: none;
+        color: white;
+        padding: 7px 9px;
+        font-size: 16px;
+        cursor: pointer;
+        float: right;
+    }
+
+    /* Darker background on mouse-over */
+    .btn1:hover {
+        background-color: #23b7e5;
+    }
+
+    .btn2 {
+        font-weight: 700;
+        height: 29px;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+        margin-top:-30px;
+    }
+
+</style>
+<!--<div class="container"> -->
+<div class="row">
+    <div class="col-sm-12" style="padding: 2%;">
+       <!-- <button class="btn2 btn-info pull-right MRTop" style="margin-left: 1%;margin-right: 1%;" data-toggle="modal" data-target="#FeedbackModal" title="Feedback"><i class="fa fa-comments-o" ></i></button>
+        </button>-->
+        <button class="btn2 btn-info pull-right MRTop" style="margin-left: 1%;margin-right: -1%;margin-top: 10%;height: 100%;" data-toggle="modal" data-target="#FeedbackModal" title="Feedback"><i class="fa" style="
+    writing-mode: vertical-rl;
+   font-family: sans-serif;font-style: inherit;
+    font-size: 140%;
+">feedback</i></button>
+            <div class="panel panel-info">
+                <div class="w3-padding w2-xlarge w2-teal" ng-if="userinfodata.RoleId==5 || userinfodata.RoleId==6 || userinfodata.RoleId==7 || userinfodata.RoleId==3">
+                    <button class="btn1" ui-sref="home"><i class="fa fa-home"></i> Home</button>
+
+                   </div>
+                <div class="panel-heading" style="background-color: #39bee7;" >
+                    <h3 class="panel-title" style="text-align: center">Personal Information </h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="col-lg-12">
+                            <div class="col-lg-4" align="center"> <img alt="User Pic" src="http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png" class="img-circle img-responsive"> </div>
+
+                                <div class="col-lg-8">
+                                    <h2>{{currentEmployee.FirstName}} &nbsp;{{currentEmployee.LastName}}</h2>
+                                    <h4>{{currentEmployee.Designation}}</h4>
+                                    <h4>{{currentEmployee.EmployeeId}}</h4>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-12">
+                                <table class="table table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td><strong>Phone Number</strong></td>
+                                        <td>:</td>
+                                        <td>{{currentEmployee.ContactNo}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><strong>Email</strong></td>
+                                        <td>:</td>
+                                        <td><!--<a href="mailto:info@support.com">-->{{currentEmployee.email}}<!--</a>--></td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
+                            <br>
+                        </div><div class="vl"></div>
+                    <div class="col-lg-6" >
+                        <table class="table table-user-information">
+                            <tbody>
+
+                        <tr>
+                            <td><strong>Date of Joining</strong></td>
+                            <td>:</td>
+                            <td>{{currentEmployee.DateOfJoining}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date of Birth</strong></td>
+                            <td>:</td>
+                            <td>{{currentEmployee.DateOfBirth}}</td>
+                        </tr>
+
+
+                        <tr>
+                            <td><strong>Business Unit</strong></td>
+                            <td>:</td>
+                            <td>{{currentEmployee.BuName}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reporting Head</strong></td>
+                            <td>:</td>
+                            <td>{{currentEmployee.reportsToName}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Prior Experience&nbsp;(In Months)</strong></td>
+                            <td>:</td>
+                            <td>{{currentEmployee.PriorExprience}}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integra Experience&nbsp;(In Months)</strong></td>
+                            <td>:</td>
+                            <td>{{currentEmployee.integraExperience}}</td>
+                        </tr>
+                        </table>
+                    </div></div>
+                </div> </div>  </div>
+    <!-- Starts Add Feedback Form -->
+    <div class="modal fade" id="FeedbackModal" tabindex="-1" role="dialog" aria-labelledby="feedbackModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 376px;height: 269px;margin-left: 15%;margin-top: 10%;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="feedbackModalLabel" style="
+    text-align: center;
+    color: #23b7e5;
+">Talk With Us</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="row">
+                            <input type="hidden" ng-model="userinfodata.EmployeeId" class="form-control" readonly="readonly">
+                            <div class="col-lg-5">
+                                <label>Feedback Type:<span style="color:#3c8dbc;">*</span></label>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="form-group">
+
+                                    <select class="form-control" ng-model="Type">
+                                        <option value="">--Select Type--</option>
+                                        <option value="ReportBugs">ReportBugs</option>
+                                        <option value="Suggest">Suggest</option>
+                                        <option value="Enhancement">Enhancement</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div col-lg-12>
+                                <label style="
+    padding: 1%;
+    padding-left: 4%;
+">Feedback Description:<span style="color:#3c8dbc;">*</span></label>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group">
+
+                                    <textarea class="form-control" ng-model="Details" rows="10" cols="8" >Describe your project in detail.</textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer text-center" style="text-align: center; margin-top: -8%;">
+                    <button type="button" class="mb-sm btn btn-primary btn-outline" ng-click="addFeedbackform(Type,Details)">Send</button>
+                    <!--<button type="reset" class="mb-sm btn btn-danger btn-outline " ng-click="Clear()" data-dismiss="modal">Close</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Add Feedback Form -->
+
+</div>
+
+              <!--  <P><strong>Additinal Resource Skills</strong></P> -->
+
+                    <div class="row">
+                   <div class="col-sm-12">
+
+
+                                <div class="col-sm-6" style="padding: 1%;">
+
+                                    <div class="panel panel-info" >
+                                        <div class="panel-heading" style="background-color: #39bee7;">
+                                            <h3 class="panel-title" style="font-family: sans-serif;font-style: inherit;">Additional Resource Skills <i style="margin-left: 25%;font-family: sans-serif;font-style: inherit;">Primary Skills:{{currentEmployee.Ps}}</i> </h3>
+                                        </div></div>
+
+                                    <div id="wrap">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="col-xs-3">Category</th>
+                                        <th class="col-xs-3">Skills</th>
+                                        <th class="col-xs-3">Rating</th>
+                                        <th class="col-xs-3">Last Modified</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody ng-repeat="user in currentEmployeeResource">
+                                    <tr>
+                                        <td class="col-xs-3">{{user.categoryName}}</td>
+                                        <td class="col-xs-3">{{user.skillName}}</td>
+                                        <td class="col-xs-3">{{user.rating}}</td>
+                                        <td class="col-xs-3">{{user.ModifiedDate || user.CreatedDate}}</td>
+                                    </tr>
+                                   
+                                </tbody>
+                                
+                            </table></div>
+                                </div>
+
+                   <!--    <div class="col-sm-6" style="padding: 1%;">
+=======
+                       <!--<div class="col-sm-6" style="padding: 1%;">
+
+                           <div class="panel panel-info" >
+                               <div class="panel-heading" style="background-color: #39bee7;">
+                                   <h3 class="panel-title" style="font-family: sans-serif;font-style: inherit;">Project Details <i style="margin-left: 25%;margin-left: 25%;font-family: sans-serif;font-style: inherit;">Current Project:</i> </h3>
+                               </div></div>
+                                    <div id="wrap">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th class="col-xs-3">Project Name</th>
+                                                <th class="col-xs-3">Client</th>
+                                                <th class="col-xs-3">From Date</th>
+                                                <th class="col-xs-3">To Date</th>
+                                            </tr>
+                                            </thead>
+
+                                 <tbody ng-repeat="user in currentEmployeeResource">
+                                            <tr>
+                                                <td class="col-xs-3">{{user.categoryName}}</td>
+                                                <td class="col-xs-3">{{user.skillName}}</td>
+                                                <td class="col-xs-3">{{user.rating}}</td>
+                                                <td class="col-xs-3">{{user.ModifiedDate}}</td>
+                                            </tr>
+
+                                            </tbody> 
+                                            <tbody>
+                                            <tr>
+                                              
+                                            </tr>
+                                            <tr>
+                                             
+                                            </tr>
+                                            <tr>
+                                             
+                                            </tr>
+                                            <tr>
+                                              
+
+
+                                            <tbody>
+                                            <tr>
+
+                                            </tr>
+                                            <tr>
+
+                                            </tr>
+                                            <tr>
+
+                                            </tr>
+                                            <tr>
+
+
+                                            </tr>
+
+                                            </tbody>
+
+
+                                        </table></div></div> -->
+
+                                        </table></div></div>-->
+
+                                </div>
+                            </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        var panels = $('.user-infos');
+        var panelsButton = $('.dropdown-user');
+        panels.hide();
+        //Click dropdown
+        panelsButton.click(function () {
+            //get data-for attribute
+            var dataFor = $(this).attr('data-for');
+            var idFor = $(dataFor);
+            //current button
+            var currentButton = $(this);
+            idFor.slideToggle(400, function () {
+                //Completed slidetoggle
+                if (idFor.is(':visible')) {
+                    currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+                }
+                else {
+                    currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+                }
+            })
+        });
+        $('[data-toggle="tooltip"]').tooltip();
+        $('button').click(function (e) {
+            e.preventDefault();
+            // alert("This is a demo.\n :-)");
+        });
+    });
+</script>
+<!--<style>
+        div.scrollable
+        {
+        width:100%;
+        height: 180px;
+        margin: 0;
+        padding: 0;
+        overflow-y: scroll
+        }
+        </style> -->
+        <script>
+                document.getElementById("wrap").addEventListener("scroll", function () {
+                var translate = "translate(0," + this.scrollTop + "px)";
+                this.querySelector("thead").style.transform = translate;
+                });
+                </script>
